@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+    <link rel="icon" href="{{url_for('static', filename='resource/logo.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/common.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}">
+</head>
+<body>
+{% include "header.html" %}
+
+<div class="main container">
+
+    <div class="blog-head">
+        <h2 class="text-center"><strong>我的博客</strong></h2>
+    </div>
+
+    <div class="blog-body" style="min-height: 400px">
+
+        {% for post in posts %}
+            <div class="blog-card">
+                <p class="blog-title">
+                    {{ post.title }}
+                </p>
+                <p class="blog-content">
+                    {{ post.body }}
+                </p>
+                <div class="text-right">
+                    <span class="author">
+                        {{ post.author.username  }}
+                    </span>
+                    <span class="time-stamp">
+                        {{ post.timestamp }}
+                    </span>
+                </div>
+                <div class="text-right">
+                    <a href="{{ url_for('user_delete', post_id=post.id) }}">delete</a>
+                    <a href="{{ url_for('change_blog', post_id=post.id) }}">change</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include "footer.html" %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" herf={{url_for('static', filename='resource/logo.png')}} >
+     {% if title %}
+        <title>{{ title }} - 博客</title>
+        {% else %}
+        <title>欢迎来到博客!</title>
+        {% endif %}
+    </head>
+    <body>
+
+    {% include 'header.html' %}
+
+
+    <div style="margin-top: 57px" class="container">
+      {% block content %}
+{#        接下来的都是子类html继承这个base的html#}
+      {% endblock %}
+    </div>
+    {% include 'footer.html' %}
+
+</body>
+</html>
