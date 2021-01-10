@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="icon" href="{{url_for('static', filename='resource/logo.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/common.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+{#        接下来的都是子类html继承这个base的html#}
+        <div class="main container">
+        <div class="blog-head">
+        <h2 class="text-center"><strong>博客专栏</strong></h2>
+        </div>
+
+        <div class="blog-body">
+        {% for post in posts %}
+            <div>
+                <div class="blog-card">
+                <a class="blog-title" href="{{url_for('blog_user',post_id=post.id)}}">
+                    {{ post.title }}
+                </a>
+                    {% if post.len>10 %}
+                        <p class="blog-content long">{{ post.head }}</p>
+                    {% else %}
+                        <p class="blog-content ">{{ post.body }}</p>
+                    {% endif %}
+
+                <div class="blog-info text-right">
+                    <span class="author">
+                        {{ post.author.username }}
+                    </span>
+                    <span class="time-stamp">
+                        2099-12-31 23:59:59
+                    </span>
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+        </div>
+      {% endblock %}
+
+</body>
+</html>

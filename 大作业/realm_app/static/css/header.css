@@ -1,0 +1,16 @@
+.head{
+    /*background: #ccc;*/
+}
+
+.nav-link{
+    color: #0b2e13;
+}
+
+.main{
+    margin-top: 57px;
+}
+
+.userLogo{
+    border: none;
+    border-radius: 10px;
+}

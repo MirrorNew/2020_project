@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href={{url_for('static', filename='resource/logo_red.png')}}>
+    <title>登录</title>
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='css/common.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='css/login.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{url_for('static', filename='javaScript/jquery-3.5.1.min.js')}}" type="text/javascript" language="JavaScript"></script>
+    <script src="{{url_for('static', filename='javaScript/common.js')}}" type="text/javascript" language="JavaScript"></script>
+    <script src="{{url_for('static', filename='javaScript/login.js')}}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body class="background-login-or-register">
+<div id="stars"></div>
+<div class="login-container">
+    <h2 class="login-title">账号登录</h2>
+
+    <form action="" method="post" novalidate="novalidate">
+        {{ form.hidden_tag() }}
+        <div class="common-container">
+            {{ form.username.label(class="common-label") }}
+            {{ form.username(size=32 ,id="username",class="common-input") }}
+            <div class="common-line"></div>
+            <span class="text-center common-hint">i</span>
+            <span id="username-hint" class="send">
+                忘记了密码？使用您的邮箱<a class="login-send-hint" href="">找回用户名</a>
+            </span>
+        </div>
+
+        <div class="common-container">
+            {{ form.password.label(class="common-label") }}
+            {{ form.password(size=64 ,id="password",class="common-input") }}
+            <div class="common-line"></div>
+            <span class="text-center common-hint">i</span>
+            <span id="password-hint" class="send">
+                忘记了密码？<a class="login-send-hint" href="">找回密码</a>
+            </span>
+        </div>
+
+        <div class="common-submit-container text-center">
+              {{ form.submit(class="login-submit",id="submit") }}
+        </div>
+        <p class="common-help text-center">
+            <a href="{{url_for('static', filename='help')}}">需要帮助？</a>
+        </p>
+    </form>
+</div>
+<div class="text-center help-container">
+    <h2 class="login-title">没有xxx账户？</h2>
+    <div class="login-register-submit-container">
+        <a type="button" class="btn login-register" href="{{url_for('register')}}">注册账户</a>
+    </div>
+    <div class="common-copyright text-center">
+        <ul>
+            <li>© xxx 2020</li>
+            <li><sup>TM</sup>1139350149@qq.com</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

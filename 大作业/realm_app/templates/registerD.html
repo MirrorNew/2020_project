@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{url_for('static', filename='resource/logo_red.png')}}">
+    <title>注册</title>
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='css/common.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='css/register.css')}}" rel="stylesheet" type="text/css">
+    <script src="{{url_for('static', filename='javaScript/jquery-3.5.1.min.js')}}" type="text/javascript" language="JavaScript"></script>
+    <script src="{{url_for('static', filename='javaScript/common.js')}}" type="text/javascript" language="JavaScript"></script>
+    <script src="{{url_for('static', filename='javaScript/register.js')}}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body class="background-login-or-register">
+<div id="register-hint" class="alert alert-success register-hint">您现在可以注册账号了！</div>
+<div id="stars"></div>
+<div class="register-container">
+    <h2 class="register-title">创建您的 xxx 账户</h2>
+    <h5 class="register-title common-help">已有 xxx 账户？<a href="{{url_for('login')}}">登录</a></h5>
+
+    <hr class="register-divider">
+
+    <form action="" method="post">
+     {{ form.hidden_tag()}}
+        <div class="row row-cols-3">
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    {{ form.username.label(class="common-label") }}
+                    {{ form.username(size=32 ,id="username",class="common-input") }}
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    {{ form.email.label(class="common-label") }}
+                    {{ form.email(size=64,id="email",class="common-input") }}
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                 {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    {{ form.password.label(class="common-label") }}
+                    {{ form.password(size=64 ,id="password",class="common-input") }}
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="desc-container">
+                    <p class="register-category-desc">
+                        6-20个字符(至少1个字母，1个数字)，仅支持字母与数字
+                    </p>
+                </div>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    {{ form.password2.label(class="common-label") }}
+                    {{ form.password2(size=64 ,id="password2",class="common-input") }}
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                {% for error in form.password2.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <hr class="register-divider">
+
+        <div class="common-submit-container text-center">
+            {{ form.submit(class="register-submit",id="submit") }}
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
